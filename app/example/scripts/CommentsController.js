@@ -18,11 +18,12 @@ angular
               
               $scope.submitComments = function()
               {
-              var modalView = new supersonic.ui.View("example#getting-started");
+              //var modalView = new supersonic.ui.View("example#getting-started");
               var options = {
               animate: true
               }
-              supersonic.ui.modal.show(modalView, options);
+              supersonic.ui.modal.hide(options);
+              //supersonic.ui.modal.show(modalView, options);
               }
 
               });

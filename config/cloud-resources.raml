@@ -16,10 +16,12 @@ traits:
             default: 79914
   
 schemas:
-  - PictureData_collection: '{"$schema":"http://json-schema.org/schema","title":"PictureData collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical PictureData representation","properties":{},"required":[]}}}}'
-  - PictureData_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical PictureData representation","properties":{"object":{"type":"object","properties":{},"required":[]}}}'
-  - userPictureData_collection: '{"$schema":"http://json-schema.org/schema","title":"userPictureData collection","type":"object","properties":{"results":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical userPictureData representation","properties":{},"required":[]}}}}'
-  - userPictureData_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical userPictureData representation","properties":{},"required":[]}'
+  - PictureData_collection: '{"$schema":"http://json-schema.org/schema","title":"PictureData collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical PictureData representation","properties":{"imageUrl":{"type":"string"},"likes":{"type":"integer"},"dislikes":{"type":"integer"},"comments":{"type":"string"}},"required":[]}}}}'
+  - PictureData_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical PictureData representation","properties":{"object":{"type":"object","properties":{"imageUrl":{"type":"string"},"likes":{"type":"integer"},"dislikes":{"type":"integer"},"comments":{"type":"string"}},"required":[]}}}'
+  - userPictureData_collection: '{"$schema":"http://json-schema.org/schema","title":"userPictureData collection","type":"object","properties":{"results":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical userPictureData representation","properties":{"Comments":{"type":"string"},"Dislikes":{"type":"integer"},"Likes":{"type":"integer"},"createdAt":{"type":"string"},"objectId":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}}}}'
+  - userPictureData_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical userPictureData representation","properties":{"Comments":{"type":"string"},"Dislikes":{"type":"integer"},"Likes":{"type":"integer"},"createdAt":{"type":"string"},"objectId":{"type":"string"},"updatedAt":{"type":"string"}},"required":[]}'
+  - Pictures_collection: '{"$schema":"http://json-schema.org/schema","title":"Pictures collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Pictures representation","properties":{"URL":{"type":"string"}},"required":[]}}}}'
+  - Pictures_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Pictures representation","properties":{"object":{"type":"object","properties":{"URL":{"type":"string"}},"required":[]}}}'
 
 resourceTypes:
   - dolan_db_collection:
@@ -186,5 +188,15 @@ resourceTypes:
   type: parse_collection
   /{id}:
     type: parse_member
+
+/Pictures:
+  description: |
+    {
+      "resourceName": "Pictures",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
 
 

@@ -1,13 +1,23 @@
 angular
   .module('example')
-  .controller('GettingStartedController', function($scope, supersonic) {
+  .controller('GettingStartedController', ['$scope', 'supersonic', 'incrementImageIndex', function($scope, supersonic, incrementImageIndex) {
     var PictureData = supersonic.data.model('PictureData');
-     var images ;
-    var index = 0;
+    //console.log(PictureData);
+     var images =[];
+    
     PictureData.findAll().then(function (allPictures) {
-	$scope.images = allPictures;
+    //console.log(allPictures);
+    angular.forEach(allPictures, function (picture){
+    //console.log(picture.imageUrl);
+    images.push(picture.imageUrl);
     });
-    $scope.currentImage = $scope.images[index].imageUrl;
+    console.log(images[0]);
+    $scope.currentImage = images[0];
+    $scope.$apply();
+    console.log($scope.currentImage);
+    });
+    //console.log(images[0]);
+    
     //console.log(images[0].imageUrl);
     var options = {
                     message: "Leave your feedback",
@@ -19,8 +29,11 @@ angular
 			var options = {
  			 animate: true
 				          }
-			index += 1;
-			$scope.currentImage = images[index%images.length].imageUrl;
+			var index = incrementImageIndex.incrementCount();
+			console.log(index);
+			$scope.currentImage = images[index%images.length];
+			console.log($scope.currentImage);
+			//$scope.$apply();
 			supersonic.ui.modal.show(modalView, options);
 			}
 	
@@ -33,4 +46,4 @@ angular
               
     supersonic.ui.tabs.hide();
 
-  });
+  }]);

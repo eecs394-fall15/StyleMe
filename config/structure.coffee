@@ -22,7 +22,7 @@ module.exports =
   ]
 
   # rootView:
-  #   location: "example#getting-started"
+#   location: "pictures#index"
 
   preloads: [
     {
