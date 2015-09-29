@@ -7,8 +7,13 @@
   </super-navbar>
 
 <body>
-    <tags-input ng-model="tags">
+	<div class = "tag">
+    <tags-input ng-model="tagsset">
     </tags-input>
+    </div>
+    <div class = "buttonsblock" ng-repeat = "(key,value) in tags" >
+    <button style = "background-color:transparent;border:1px outset black;height:50px;" ng-click = "addTag(value.text)">{{value.text}}</button>
+    </div>
     <button ng-click="submitComments()">Submit</button>
 </body>
 
