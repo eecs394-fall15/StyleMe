@@ -7,18 +7,25 @@
   </super-navbar>
 
 <div class="list card">
-  <div class="item item-image">
-    <img ng-src={{currentImage}} ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
-  </div>
+    <div class="item item-divider" style="text-align:center">
+      Appropriate for an interview?
+    </div>
+
+    <div class="item item-image">
+      <img classs="full-image" ng-src={{currentImage}} ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
+    </div>
+    
+      <table style="width:100%;text-align:center;">
+        <tr>
+          <td style="vertical-align:middle;color:#8B0000" ng-click="swipeLeft()"> <b>Needs work</b></td>
+          <td><img src="/icons/swipe.svg" alt="Swipe" width="110" height="110" align="middle"></td>
+          <td style="vertical-align:middle;color:#228B22" ng-click="swipeRight()"><b>Good to go!</b></td>
+        </tr>
+      </table>
+
 </div>
 
 
-<table style="width:100%;text-align:center;">
-  <tr>
-  	<td style="vertical-align:middle;color:#8B0000" ng-click="swipeLeft()"> <b>Needs work</b></td>
-  	<td><img src="/icons/swipe.svg" alt="Swipe" width="110" height="110" align="middle"></td>
-  	<td style="vertical-align:middle;color:#228B22" ng-click="swipeRight()"><b>Good to go!</b></td>
-  </tr>
-</table>
+
 
 </div>
