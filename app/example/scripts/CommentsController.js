@@ -23,6 +23,7 @@ angular
               var options = {
               animate: true
               }
+              supersonic.ui.modal.hide(options);
               //supersonic.ui.modal.show(modalView, options);
               }
 
