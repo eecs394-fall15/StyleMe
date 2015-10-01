@@ -43,7 +43,4 @@ angular
     $scope.swipeRight = function(){
               createModal();
                         }
-              
-    supersonic.ui.tabs.hide();
-
   }]);
