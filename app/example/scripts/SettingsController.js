@@ -17,7 +17,10 @@ angular
 		$scope.base64 = result;
 		var ref = new Firebase("https://styleme1.firebaseio.com/");
 		// var syncObject = $firebaseObject(ref);
-		ref.set(result);
+		ref.push({
+		  title: "Appropriate for an interview?",
+		  image: result
+		});
   		// syncObject.set({pic: $scope.base64});
 	});
 
