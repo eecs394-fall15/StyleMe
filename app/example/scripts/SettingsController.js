@@ -8,22 +8,25 @@ angular
 		  quality: 50,
 		  allowEdit: true,
 		  targetWidth: 300,
-		  targetHeight: 300,
+		  targetHeight: 400,
 		  encodingType: "png",
 		  saveToPhotoAlbum: true,
 		  destinationType: "dataURL"
 		};
 		supersonic.media.camera.takePicture(options).then( function(result){
 			$scope.base64 = result;
-			var ref = new Firebase("https://styleme1.firebaseio.com/");
-			// var syncObject = $firebaseObject(ref);
-			ref.push({
-			  title: "Appropriate for an interview?",
-			  image: result
-			});
-	  		// syncObject.set({pic: $scope.base64});
+			
 		});
 	};
+	$scope.base64;
+
+	$scope.submitPicture = function(){
+			var ref = new Firebase("https://styleme1.firebaseio.com/");
+			ref.push({
+			  title: "Appropriate for an interview?",
+			  image: $scope.base64
+			});	
+	}
 
   	// download the data into a local object
   	// $scope.data = $firebaseObject(ref);
