@@ -2,15 +2,19 @@
 
   <super-navbar>
     <super-navbar-title>
-      Settings
+      Upload a Picture
     </super-navbar-title>
   </super-navbar>
 
+  	<label class="item item-input">
+	    <input type="text" placeholder="Ask your question here" ng-model="question">
+	</label>
+
   	<button class="button button-positive" ng-click="openCamera()">
-	  	Take picture
+	  	Take Picture
 	</button>
 
 	<img width="300" height="400" src="data:image/png;base64,{{ base64 }}" />
 
     <button ng-click="submitPicture()">Submit</button>
- --></div>
+</div>

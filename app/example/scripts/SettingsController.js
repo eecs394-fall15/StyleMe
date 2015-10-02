@@ -23,7 +23,7 @@ angular
 	$scope.submitPicture = function(){
 			var ref = new Firebase("https://styleme1.firebaseio.com/");
 			ref.push({
-			  title: "Appropriate for an interview?",
+			  title: $scope.question,
 			  image: $scope.base64
 			});	
 	}
