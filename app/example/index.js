@@ -1,6 +1,6 @@
 angular.module('example', [
   // Declare here all AngularJS dependencies that are shared by the example module.
-  'supersonic', 'ngTouch', 'ngTagsInput'
+  'supersonic', 'ngTouch', 'ngTagsInput', 'firebase'
 ])
 .factory('incrementImageIndex', function (){
 var countF = 0;
