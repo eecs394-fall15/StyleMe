@@ -7,10 +7,10 @@ angular
 		var options = {
 		  quality: 50,
 		  allowEdit: true,
-		  targetWidth: 300,
-		  targetHeight: 400,
+		  targetWidth: 600,
+		  targetHeight: 600,
 		  encodingType: "png",
-		  saveToPhotoAlbum: true,
+		  saveToPhotoAlbum: false,
 		  destinationType: "dataURL"
 		};
 		supersonic.media.camera.takePicture(options).then( function(result){
@@ -28,6 +28,18 @@ angular
 			  likes : 0,
 			  dislikes : 0
 			});	
+
+			var options = {
+			  
+			  buttonLabel: "Close"
+			};
+
+			supersonic.ui.dialog.alert("Success!", options).then(function() {
+			  supersonic.logger.log("Alert closed.");
+			});
+
+			$scope.base64="";
+			$scope.question="";
 	}
 
   	// download the data into a local object
