@@ -67,7 +67,7 @@ angular
       $scope.currentTitle = titles[index%titles.length];
 			console.log($scope.currentImage);
 			//$scope.$apply();
-			supersonic.ui.modal.show(modalView, options);
+			//supersonic.ui.modal.show(modalView, options);
 			}
 	
     $scope.swipeLeft = function(){
