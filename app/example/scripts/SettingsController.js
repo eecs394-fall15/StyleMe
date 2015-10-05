@@ -24,7 +24,9 @@ angular
 			var ref = new Firebase("https://styleme1.firebaseio.com/");
 			ref.push({
 			  title: $scope.question,
-			  image: $scope.base64
+			  image: $scope.base64,
+			  likes : 0,
+			  dislikes : 0
 			});	
 	}
 
