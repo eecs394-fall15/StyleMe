@@ -1,7 +1,21 @@
 angular
   .module('example')
   .controller('SettingsController', function($scope, supersonic, $firebaseObject) {
+              
     $scope.navbarTitle = "Settings";
+              
+    $scope.animateView = function(){
+             supersonic.logger.log("Animate called");
+              supersonic.ui.animate("curlDown").perform();
+              /*var options = {
+              duration: 10,
+              curve: "easeInOut
+              }
+              supersonic.ui.animate("curlDown", options).perform().then( function() {
+                                                                        supersonic.logger.log("About to start an animation");
+                                                                        });*/
+    };
+
 	
     $scope.openCamera = function(){
 		var options = {

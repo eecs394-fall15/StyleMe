@@ -4,7 +4,9 @@ angular
     var ref = new Firebase("https://styleme1.firebaseio.com/");
     var images = [];
     var titles = [];
+    $scope.isLoading = true;
     ref.once("value", function(data) {
+      $scope.isLoading = false;
       for (var key in data.val()){
         supersonic.logger.log(key);
         if (data.val().hasOwnProperty(key)){
@@ -57,14 +59,14 @@ angular
                   };
      */         
 	var createModal = function(){
-            var modalView = new supersonic.ui.View("example#comments");
+            /*var modalView = new supersonic.ui.View("example#comments");
 			var options = {
  			 animate: true
-				          }
+				          }*/
 			var index = incrementImageIndex.incrementCount();
 			console.log(index);
 			$scope.currentImage = images[index%images.length];
-      $scope.currentTitle = titles[index%titles.length];
+            $scope.currentTitle = titles[index%titles.length];
 			console.log($scope.currentImage);
 			//$scope.$apply();
 			//supersonic.ui.modal.show(modalView, options);
@@ -72,8 +74,10 @@ angular
 	
     $scope.swipeLeft = function(){
               createModal();
+              supersonic.ui.animate("slideFromRight").perform();
             }
     $scope.swipeRight = function(){
               createModal();
+              supersonic.ui.animate("slideFromLeft").perform();
                         }
   }]);

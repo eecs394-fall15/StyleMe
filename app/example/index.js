@@ -13,4 +13,14 @@ return {
            countF++;
             return countF;
         }
-    }});
+         }})
+.directive('loadingView', function ()
+                         {
+                         return {
+                         restrict: 'E',
+                         scope: {
+                            isLoading: '='
+                            },
+                            };
+           
+           });
