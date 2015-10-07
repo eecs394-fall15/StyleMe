@@ -6,7 +6,7 @@
     </super-navbar-title>
   </super-navbar>
 
-  <loading-view ng-hide="!isLoading" is-loading="isLoading">
+  <loading-view ng-hide="!isLoading" is-loading="isLoading"> {{uuid}}
       <img style="margin-top:185px;margin-left:110px"  width="100px" height="40px" src="/images/ajax-loader (1).gif"/>
       <br><br>
       <p style="margin-left:90px;font-family:new century schoolbook;font-size:18px"><em>Take a deep breath! :)</em></p>
@@ -17,6 +17,7 @@
 <div class="list card" ng-hide="isLoading">
     <div class="item item-divider" style="text-align:center">
       {{currentTitle}}
+
     </div>
 
     <div class="item item-image">

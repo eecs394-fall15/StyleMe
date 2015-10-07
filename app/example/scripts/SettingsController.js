@@ -3,6 +3,7 @@ angular
   .controller('SettingsController', function($scope, supersonic, $firebaseObject) {
               
     $scope.navbarTitle = "Settings";
+    $scope.userid;
               
     $scope.animateView = function(){
              supersonic.logger.log("Animate called");
@@ -35,7 +36,7 @@ angular
 	$scope.base64;
 
 	$scope.submitPicture = function(){
-			var ref = new Firebase("https://styleme1.firebaseio.com/");
+			var ref = new Firebase("https://styleme1.firebaseio.com/" + $scope.userid);
 			ref.push({
 			  title: $scope.question,
 			  image: $scope.base64,

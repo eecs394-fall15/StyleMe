@@ -14,6 +14,11 @@ module.exports =
       id: "settings"
       location: "example#settings"
     }
+    {
+      title: "Results"
+      id: "learn-more"
+      location: "example#learn-more"
+    }
   ]
 
   # rootView:
