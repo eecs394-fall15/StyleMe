@@ -6,7 +6,15 @@
     </super-navbar-title>
   </super-navbar>
 
-<div class="list card">
+  <loading-view ng-hide="!isLoading" is-loading="isLoading">
+      <img style="margin-top:185px;margin-left:110px"  width="100px" height="40px" src="/images/ajax-loader (1).gif"/>
+      <br><br>
+      <p style="margin-left:90px;font-family:new century schoolbook;font-size:18px"><em>Take a deep breath! :)</em></p>
+      </loading-view>
+        <!--<video width="320" height="240" controls webkit-playsinline="true"><source src="/videos/sample.mp4" type="video/mp4"></video>
+         -->
+
+<div class="list card" ng-hide="isLoading">
     <div class="item item-divider" style="text-align:center">
       {{currentTitle}}
     </div>
@@ -15,7 +23,7 @@
       <img classs="full-image" ng-src="data:image/png;base64,{{currentImage}}" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
     </div>
     
-      <table style="width:100%;text-align:center;">
+      <table style="width:100%;text-align:center;" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
         <tr>
           <td style="vertical-align:middle;color:#8B0000" ng-click="swipeLeft()"> <b>Needs work</b></td>
           <td><img src="/icons/swipe.svg" alt="Swipe" width="110" height="110" align="middle"></td>
