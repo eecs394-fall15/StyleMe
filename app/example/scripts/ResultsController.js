@@ -3,7 +3,7 @@ angular
   .controller('ResultsController', function($scope, supersonic, incrementImageIndex, $firebaseObject) {
     $scope.cards = [];
     $scope.fetchImageById = function(){
-    var ref = new Firebase("https://styleme1.firebaseio.com/" + $scope.userid);
+    var ref = new Firebase("https://styleme2.firebaseio.com/" + $scope.userid);
               
     ref.once("value", function(data) {
                        $scope.isLoading = false;

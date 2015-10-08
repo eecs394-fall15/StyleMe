@@ -22,7 +22,7 @@ angular
 	$scope.base64;
 
 	$scope.submitPicture = function(){
-			var ref = new Firebase("https://styleme1.firebaseio.com/");
+			var ref = new Firebase("https://styleme2.firebaseio.com/");
             
 			ref.child($scope.userid).push({
 			  title: $scope.question,
