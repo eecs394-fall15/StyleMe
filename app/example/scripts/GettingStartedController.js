@@ -35,21 +35,35 @@ angular
               }
               // do some stuff once
               });
-     // ref.on("value", function(snapshot) {
-     //        images = [];
-     //        titles = [];
-     //        for (var key in snapshot.val()){
-     //        if (snapshot.val().hasOwnProperty(key)){
-     //        images.push(snapshot.val()[key].image);
-     //        titles.push(snapshot.val()[key].title);
-     //        }
-     //        }
-     //        $scope.currentImage = images[incrementImageIndex.getCount()%images.length];
-     //        $scope.currentTitle = titles[incrementImageIndex.getCount()%images.length];
-     //        console.log(snapshot.val());
-     //        }, function (errorObject) {
-     //        console.log("The read failed: " + errorObject.code);
-     //        });
+     ref.on("value", function(data) {
+              $scope.isLoading = false;
+
+              for (var key in data.val()){
+                supersonic.logger.log(key);
+                if (data.val().hasOwnProperty(key)){
+
+                  nestedRef = new Firebase("https://styleme2.firebaseio.com/"+ key);
+                  nestedRef.once("value", function(nestedData) {
+                    $scope.isLoading = false;
+                    for (var nestedKey in nestedData.val()){
+
+                      supersonic.logger.log(nestedKey);
+
+                      if (nestedData.val().hasOwnProperty(nestedKey)){
+                        supersonic.logger.log(nestedData.val()[nestedKey].title);
+                        images.push(nestedData.val()[nestedKey].image);
+                        titles.push(nestedData.val()[nestedKey].title);
+                        
+                      }
+                    }
+                    $scope.currentImage = images[incrementImageIndex.getCount()%images.length];
+                    $scope.currentTitle = titles[incrementImageIndex.getCount()%images.length];
+                    $scope.$apply;
+                  });
+                }
+              }
+              // do some stuff once
+              });
   
      var createModal = function(){
      var index = incrementImageIndex.incrementCount();

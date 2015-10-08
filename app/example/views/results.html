@@ -1,10 +1,16 @@
-<div ng-controller="ResultsController">
+<div class="padding" ng-controller="ResultsController">
     
-    Enter UserID:<input type="text" ng-model="userid"/>
-    <button ng-click="fetchImageById()">Submit</button>
+    
  <super-navbar>
     <super-navbar-title ng-bind="navbarTitle"></super-navbar-title>
   </super-navbar>
+
+    <label class="item item-input">
+      <input type="text" placeholder="Enter your username" ng-model="userid">
+    </label>
+    <button class="button button-positive" ng-click="fetchImageById()">Submit</button>
+
+
   <div ng-repeat="card in cards" class="list card">
     <div class="item item-divider" style="text-align:center">
       {{card.title}}
