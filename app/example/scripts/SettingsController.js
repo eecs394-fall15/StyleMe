@@ -1,22 +1,8 @@
 angular
   .module('example')
   .controller('SettingsController', function($scope, supersonic, $firebaseObject) {
-              
+    $scope.userid = null;
     $scope.navbarTitle = "Settings";
-    $scope.userid;
-              
-    $scope.animateView = function(){
-             supersonic.logger.log("Animate called");
-              supersonic.ui.animate("curlDown").perform();
-              /*var options = {
-              duration: 10,
-              curve: "easeInOut
-              }
-              supersonic.ui.animate("curlDown", options).perform().then( function() {
-                                                                        supersonic.logger.log("About to start an animation");
-                                                                        });*/
-    };
-
 	
     $scope.openCamera = function(){
 		var options = {
@@ -36,8 +22,9 @@ angular
 	$scope.base64;
 
 	$scope.submitPicture = function(){
-			var ref = new Firebase("https://styleme1.firebaseio.com/" + $scope.userid);
-			ref.push({
+			var ref = new Firebase("https://styleme1.firebaseio.com/");
+            
+			ref.child($scope.userid).push({
 			  title: $scope.question,
 			  image: $scope.base64,
 			  likes : 0,
@@ -55,12 +42,8 @@ angular
 
 			$scope.base64="";
 			$scope.question="";
-	}
+              };
 
   	// download the data into a local object
   	// $scope.data = $firebaseObject(ref);
-
-  	
-
-  // putting a console.log here won't work, see below
 });

@@ -16,8 +16,8 @@ module.exports =
     }
     {
       title: "Results"
-      id: "learn-more"
-      location: "example#learn-more"
+      id: "results"
+      location: "example#results"
     }
   ]
 
@@ -25,14 +25,6 @@ module.exports =
 #   location: "pictures#index"
 
   preloads: [
-    {
-      id: "learn-more"
-      location: "example#learn-more"
-    }
-    {
-      id: "using-the-scanner"
-      location: "example#using-the-scanner"
-    }
   ]
 
   # drawers:

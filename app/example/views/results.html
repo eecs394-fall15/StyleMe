@@ -1,0 +1,18 @@
+<div ng-controller="ResultsController">
+    
+    Enter UserID:<input type="text" ng-model="userid"/>
+    <button ng-click="fetchImageById()">Submit</button>
+ <super-navbar>
+    <super-navbar-title ng-bind="navbarTitle"></super-navbar-title>
+  </super-navbar>
+  <div ng-repeat="card in cards" class="list card">
+    <div class="item item-divider" style="text-align:center">
+      {{card.title}}
+    </div>
+
+    <div class="item item-image">
+      <img class="full-image" ng-src="data:image/png;base64,{{card.image}}">
+    </div>
+</div>
+
+</div>
