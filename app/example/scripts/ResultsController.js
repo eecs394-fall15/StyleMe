@@ -7,6 +7,7 @@ angular
               
     ref.once("value", function(data) {
                        $scope.isLoading = false;
+                       $scope.cards = [];
                        for (var key in data.val()){
                             supersonic.logger.log(key);
                             if (data.val().hasOwnProperty(key)){
