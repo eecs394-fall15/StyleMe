@@ -1,6 +1,6 @@
 angular
   .module('example')
-  .controller('SettingsController', function($scope, supersonic, $firebaseObject) {
+  .controller('SettingsController', function($scope, supersonic, $firebaseObject, imagesArray) {
     $scope.userid = null;
     $scope.navbarTitle = "Settings";
 	
@@ -22,9 +22,9 @@ angular
 	$scope.base64;
 
 	$scope.submitPicture = function(){
-			var ref = new Firebase("https://styleme2.firebaseio.com/");
+			$scope.db = imagesArray;
             
-			ref.child($scope.userid).push({
+			$scope.db.$add({
 			  title: $scope.question,
 			  image: $scope.base64,
 			  likes : 0,

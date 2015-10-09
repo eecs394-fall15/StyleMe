@@ -5,8 +5,13 @@
             StyleMe
         </super-navbar-title>
     </super-navbar>
+
+    {{imagesCopy}}
+    <ul>
+        <li ng-repeat="image in imagesCopy">{{image.title}}</li>
+    </ul>
     
-    <loading-view ng-hide="!isLoading" is-loading="isLoading">
+    <!-- <loading-view ng-hide="!isLoading" is-loading="isLoading">
         <img style="margin-top:185px;margin-left:110px"  width="100px" height="40px" src="/images/ajax-loader (1).gif"/>
         <br><br>
         <p style="margin-left:90px;font-family:new century schoolbook;font-size:18px"><em>Take a deep breath! :)</em></p>
@@ -28,5 +33,5 @@
                 <td style="vertical-align:middle;color:#228B22" ng-click="swipeRight()"><b>Good to go!</b></td>
             </tr>
         </table>
-    </div>
+    </div> -->
 </div>
