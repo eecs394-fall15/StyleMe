@@ -2,6 +2,10 @@ angular.module('example', [
   // Declare here all AngularJS dependencies that are shared by the example module.
   'supersonic', 'ngTouch', 'ngTagsInput', 'firebase'
 ])
+.factory('Auth', ['$firebaseAuth', function($firebaseAuth){
+  var ref = new Firebase("https://stylemelogin.firebaseio.com");
+  return $firebaseAuth(ref);
+}])
 .factory('incrementImageIndex', function (){
 var countF = 0;
 return {
@@ -14,6 +18,7 @@ return {
             return countF;
         }
          }})
+
 .directive('loadingView', function ()
                          {
                          return {

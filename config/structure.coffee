@@ -14,6 +14,11 @@ module.exports =
       id: "settings"
       location: "example#settings"
     }
+    {
+      title : "Results"
+      id : "results"
+      location: "example#Results"
+    }
   ]
 
   # rootView:
@@ -38,6 +43,6 @@ module.exports =
   #   options:
   #     animation: "swingingDoor"
   #
-  # initialView:
-  #   id: "initialView"
-  #   location: "example#initial-view"
+  initialView:
+    id: "login"
+    location: "example#login"
