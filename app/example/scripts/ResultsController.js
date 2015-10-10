@@ -1,24 +1,12 @@
 angular
   .module('example')
-  .controller('ResultsController', function($scope, supersonic, incrementImageIndex, $firebaseObject) {
-    $scope.cards = [];
+  .controller('ResultsController', function($scope, supersonic, backendArray, $firebaseObject) {
+    
+    $scope.resultsArray = backendArray;
+    $scope.searchID = "_____";
+    
     $scope.fetchImageById = function(){
-    var ref = new Firebase("https://styleme2.firebaseio.com/" + $scope.userid);
-              
-    ref.once("value", function(data) {
-                       $scope.isLoading = false;
-                       $scope.cards = [];
-                       for (var key in data.val()){
-                            supersonic.logger.log(key);
-                            if (data.val().hasOwnProperty(key)){
-                                $scope.cards.push({
-                               image: data.val()[key].image,
-                               title: data.val()[key].title});
-                            }
-                       }
-                       $scope.$apply;
-                       });
-
+      $scope.searchID = $scope.userid;
     };
               
 });

@@ -11,7 +11,7 @@
     <button class="button button-positive" ng-click="fetchImageById()">Submit</button>
 
 
-  <div ng-repeat="card in cards" class="list card">
+  <div ng-repeat="card in resultsArray | filter:{user:searchID}" class="list card">
     <div class="item item-divider" style="text-align:center">
       {{card.title}}
     </div>

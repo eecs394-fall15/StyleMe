@@ -2,18 +2,18 @@ angular.module('example', [
   // Declare here all AngularJS dependencies that are shared by the example module.
   'supersonic', 'ngTouch', 'ngTagsInput', 'firebase'
 ])
-.factory('incrementImageIndex', function (){
-var countF = 0;
-return {
-        getCount : function () {
+.factory('incrementIndex', function (){
+    var countF = 0;
+    return {
+            getCount : function () {
 
-            return countF;
-        },
-        incrementCount:function(){
-           countF++;
-            return countF;
-        }
-         }})
+                return countF;
+            },
+            incrementCount:function(){
+               countF++;
+                return countF;
+            }
+             }})
 .directive('loadingView', function ()
                          {
                          return {
@@ -24,10 +24,10 @@ return {
                             };
            
            })
-.factory('imagesArray', ['$firebaseArray',
+.factory('backendArray', ['$firebaseArray',
   function($firebaseArray) {
     // create a reference to the database where we will store our data
-    var ref = new Firebase("https://stylemearray.firebaseio.com/");
+    var ref = new Firebase("https://styleme1.firebaseio.com/");
 
     return $firebaseArray(ref);
   }

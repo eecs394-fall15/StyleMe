@@ -6,24 +6,21 @@
         </super-navbar-title>
     </super-navbar>
 
-    {{imagesCopy}}
-    <ul>
-        <li ng-repeat="image in imagesCopy">{{image.title}}</li>
-    </ul>
     
-    <!-- <loading-view ng-hide="!isLoading" is-loading="isLoading">
+    <loading-view ng-hide="!isLoading" is-loading="isLoading">
         <img style="margin-top:185px;margin-left:110px"  width="100px" height="40px" src="/images/ajax-loader (1).gif"/>
         <br><br>
         <p style="margin-left:90px;font-family:new century schoolbook;font-size:18px"><em>Take a deep breath! :)</em></p>
     </loading-view>
     
     <div class="list card" ng-hide="isLoading">
+
         <div class="item item-divider" style="text-align:center">
-            {{currentTitle}}
+            {{swipeArray[cardIndex].title}}
         </div>
         
         <div class="item item-image">
-            <img class="full-image" ng-src="data:image/png;base64,{{currentImage}}" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
+            <img class="full-image" ng-src="data:image/png;base64,{{swipeArray[cardIndex].image}}" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
                 </div>
         
         <table style="width:100%;text-align:center;" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
@@ -33,5 +30,5 @@
                 <td style="vertical-align:middle;color:#228B22" ng-click="swipeRight()"><b>Good to go!</b></td>
             </tr>
         </table>
-    </div> -->
+    </div>
 </div>

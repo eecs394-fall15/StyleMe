@@ -1,8 +1,9 @@
 angular
   .module('example')
-  .controller('SettingsController', function($scope, supersonic, $firebaseObject, imagesArray) {
+  .controller('SettingsController', function($scope, supersonic, $firebaseObject, backendArray) {
     $scope.userid = null;
     $scope.navbarTitle = "Settings";
+
 	
     $scope.openCamera = function(){
 		var options = {
@@ -22,13 +23,14 @@ angular
 	$scope.base64;
 
 	$scope.submitPicture = function(){
-			$scope.db = imagesArray;
+			$scope.db = backendArray;
             
 			$scope.db.$add({
 			  title: $scope.question,
 			  image: $scope.base64,
 			  likes : 0,
-			  dislikes : 0
+			  dislikes : 0,
+			  user: $scope.userid
 			});	
 
 			var options = {
