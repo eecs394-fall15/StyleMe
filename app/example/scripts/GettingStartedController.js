@@ -11,7 +11,7 @@ angular
 
      var ref = new Firebase("https://styleme1.firebaseio.com/");
 
-     $scope.isLoading = backendArray.length == 0;
+     $scope.isLoading = true;
      ref.once("value", function(data) {
                $scope.isLoading = false;
                $scope.cardIndex = incrementIndex.getCount();
@@ -76,11 +76,15 @@ angular
      }
      
      $scope.swipeLeft = function(){
-     createModal();
-     supersonic.ui.animate("slideFromRight").perform();
+          backendArray[$scope.cardIndex].dislikes = backendArray[$scope.cardIndex].dislikes + 1;
+          backendArray.$save($scope.cardIndex);
+          createModal();
+          supersonic.ui.animate("slideFromRight").perform();
      }
      $scope.swipeRight = function(){
-     createModal();
-     supersonic.ui.animate("slideFromLeft").perform();
+          backendArray[$scope.cardIndex].likes = backendArray[$scope.cardIndex].likes + 1;
+          backendArray.$save($scope.cardIndex);
+          createModal();
+          supersonic.ui.animate("slideFromLeft").perform();
      }
      }]);
