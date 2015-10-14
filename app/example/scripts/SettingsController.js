@@ -23,6 +23,7 @@ angular
 	$scope.base64;
 
 	$scope.submitPicture = function(){
+			supersonic.logger.log(authData.uid);
 			$scope.db = backendArray;
             if (authData){
             	$scope.db.$add({

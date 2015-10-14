@@ -3,7 +3,7 @@ angular.module('example', [
   'supersonic', 'ngTouch', 'ngTagsInput', 'firebase'
 ])
 .factory('Auth', ['$firebaseAuth', function($firebaseAuth){
-  var ref = new Firebase("https://stylemelogin.firebaseio.com");
+  var ref = new Firebase("https://styleme1.firebaseio.com");
   return $firebaseAuth(ref);
 }])
 .factory('incrementImageIndex', function (){
