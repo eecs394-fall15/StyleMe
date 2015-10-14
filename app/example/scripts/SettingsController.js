@@ -9,8 +9,8 @@ angular
 		var options = {
 		  quality: 50,
 		  allowEdit: true,
-		  targetWidth: 600,
-		  targetHeight: 600,
+		  targetWidth: 400,
+		  targetHeight: 400,
 		  encodingType: "png",
 		  saveToPhotoAlbum: false,
 		  destinationType: "dataURL"
