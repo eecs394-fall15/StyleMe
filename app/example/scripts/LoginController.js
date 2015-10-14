@@ -38,6 +38,7 @@ angular
 
     $scope.authData = authData;
     if (authData){
+      supersonic.logger.log(authData.uid);
       var animation = supersonic.ui.animate("curlDown");
     supersonic.ui.initialView.dismiss(animation);
     }

@@ -2,8 +2,8 @@ angular
   .module('example')
   .controller('ResultsController', ['$scope' , 'backendArray','Auth', 'supersonic',  function($scope, backendArray, Auth, supersonic, $firebaseObject) {
   	var authData = Auth.$getAuth();
-      $scope.resultsArray = backendArray;
       if (authData){
+        $scope.resultsArray = backendArray;
         $scope.searchID = authData.uid;
       }
     
