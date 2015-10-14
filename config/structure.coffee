@@ -14,30 +14,27 @@ module.exports =
       id: "settings"
       location: "example#settings"
     }
+    {
+      title: "Results"
+      id: "results"
+      location: "example#results"
+    }
   ]
 
   # rootView:
 #   location: "pictures#index"
 
   preloads: [
-    {
-      id: "learn-more"
-      location: "example#learn-more"
-    }
-    {
-      id: "using-the-scanner"
-      location: "example#using-the-scanner"
-    }
   ]
 
-  # drawers:
-  #   left:
-  #     id: "leftDrawer"
-  #     location: "example#drawer"
-  #     showOnAppLoad: false
-  #   options:
-  #     animation: "swingingDoor"
-  #
-  # initialView:
-  #   id: "initialView"
-  #   location: "example#initial-view"
+  drawers:
+    left:
+      id: "leftDrawer"
+      location: "example#drawer"
+      showOnAppLoad: false
+    options:
+      animation: "swingingDoor"
+  
+  initialView:
+    id: "login"
+    location: "example#login"
