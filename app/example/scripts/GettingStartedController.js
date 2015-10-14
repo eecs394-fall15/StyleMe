@@ -79,12 +79,14 @@ angular
           backendArray[$scope.cardIndex].dislikes = backendArray[$scope.cardIndex].dislikes + 1;
           backendArray.$save($scope.cardIndex);
           createModal();
-          supersonic.ui.animate("slideFromRight").perform();
+          var options = {duration: .4}
+          supersonic.ui.animate("slideFromRight", options).perform();
      }
      $scope.swipeRight = function(){
           backendArray[$scope.cardIndex].likes = backendArray[$scope.cardIndex].likes + 1;
           backendArray.$save($scope.cardIndex);
           createModal();
-          supersonic.ui.animate("slideFromLeft").perform();
+          var options = {duration:.4}
+          supersonic.ui.animate("slideFromLeft", options).perform();
      }
      }]);
