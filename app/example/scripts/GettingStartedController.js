@@ -3,90 +3,65 @@ angular
 .controller('GettingStartedController', ['$scope', 'supersonic', 'incrementIndex', 'backendArray', 
   function($scope, supersonic, incrementIndex, backendArray, $firebaseObject) {
      
-
-
      $scope.swipeArray = backendArray;
-
-     
-
-     var ref = new Firebase("https://styleme1.firebaseio.com/");
-
      $scope.isLoading = true;
-     ref.once("value", function(data) {
-               $scope.isLoading = false;
-               $scope.cardIndex = incrementIndex.getCount();
-     });  
-
-     // for (var key in data.val()){
-     //            if (data.val().hasOwnProperty(key)){
-
-     //              nestedRef = new Firebase("https://styleme.firebaseio.com/"+ key);
-     //              nestedRef.once("value", function(nestedData) {
-     //                $scope.isLoading = false;
-     //                for (var nestedKey in nestedData.val()){
-
-
-     //                  if (nestedData.val().hasOwnProperty(nestedKey)){
-     //                    supersonic.logger.log(nestedData.val()[nestedKey].title);
-     //                    images.push(nestedData.val()[nestedKey].image);
-     //                    titles.push(nestedData.val()[nestedKey].title);
-                        
-     //                  }
-     //                }
-     //                $scope.currentImage = images[incrementImageIndex.getCount()%images.length];
-     //                $scope.currentTitle = titles[incrementImageIndex.getCount()%images.length];
-     //                $scope.$apply;
-     //              });
-     //            }
-     //          }
-     //          // do some stuff once
+     $scope.swipeArray.$loaded().then
+            (function(data){
+             $scope.noMoreImages = false;
+             $scope.isLoading = false;
+             $scope.cardIndex = 0;
+             });
+             
+     var incrementImageIndex = function(){
+             
+             if(incrementIndex.getCount() < $scope.swipeArray.length - 1)
+                $scope.cardIndex = incrementIndex.incrementCount()%$scope.swipeArray.length;
+             else {
+                    $scope.noMoreImages = true;
+                    var options = {
+                                    message: "No more images for now! :(",
+                                    buttonLabel: "Close"
+                    };
+                    supersonic.ui.dialog.alert("Oops!", options).then(function() {
+                                    supersonic.logger.log("Alert closed.");
+                                    });
+                  }
+     }
      
-     // ref.on("value", function(data) {
-     //          $scope.isLoading = false;
-
-     //          for (var key in data.val()){
-     //            supersonic.logger.log(key);
-     //            if (data.val().hasOwnProperty(key)){
-
-     //              nestedRef = new Firebase("https://styleme2.firebaseio.com/"+ key);
-     //              nestedRef.once("value", function(nestedData) {
-     //                $scope.isLoading = false;
-     //                for (var nestedKey in nestedData.val()){
-
-     //                  supersonic.logger.log(nestedKey);
-
-     //                  if (nestedData.val().hasOwnProperty(nestedKey)){
-     //                    supersonic.logger.log(nestedData.val()[nestedKey].title);
-     //                    images.push(nestedData.val()[nestedKey].image);
-     //                    titles.push(nestedData.val()[nestedKey].title);
-                        
-     //                  }
-     //                }
-     //                $scope.currentImage = images[incrementImageIndex.getCount()%images.length];
-     //                $scope.currentTitle = titles[incrementImageIndex.getCount()%images.length];
-     //                $scope.$apply;
-     //              });
-     //            }
-     //          }
-     //          // do some stuff once
-     //          });
-     
-     var createModal = function(){
-          $scope.cardIndex = incrementIndex.incrementCount()%$scope.swipeArray.length;
+     var animate = function(action){
+          var options = {duration: .4}
+          supersonic.logger.log(action);
+          supersonic.ui.animate(action, options).perform();
      }
      
      $scope.swipeLeft = function(){
-          backendArray[$scope.cardIndex].dislikes = backendArray[$scope.cardIndex].dislikes + 1;
+          backendArray[$scope.cardIndex].dislikes++;
           backendArray.$save($scope.cardIndex);
-          createModal();
-          var options = {duration: .4}
-          supersonic.ui.animate("slideFromRight", options).perform();
+          incrementImageIndex();
+          animate("slideFromRight");
      }
+                                         
      $scope.swipeRight = function(){
-          backendArray[$scope.cardIndex].likes = backendArray[$scope.cardIndex].likes + 1;
+          backendArray[$scope.cardIndex].likes++;
           backendArray.$save($scope.cardIndex);
-          createModal();
-          var options = {duration:.4}
-          supersonic.ui.animate("slideFromLeft", options).perform();
+          incrementImageIndex();
+          animate("slideFromLeft");
      }
+                                         
+     $scope.refreshFeed = function() {
+        
+        if(incrementIndex.getCount() < $scope.swipeArray.length - 1){
+             $scope.noMoreImages = false;
+             $scope.cardIndex = incrementIndex.incrementCount()%$scope.swipeArray.length;
+        }
+        else {
+            var options = {
+                            message: "Try after sometime!",
+                            buttonLabel: "Close"
+                           };
+            supersonic.ui.dialog.alert("Sorry!", options).then(function() {
+                    supersonic.logger.log("Alert closed.");
+            });
+        }
+      }
      }]);

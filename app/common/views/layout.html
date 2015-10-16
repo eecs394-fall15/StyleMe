@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="/app/common/stylesheets/application.css" />
   <link rel="import" href="/components/supersonic/components/import.html"/>
   <link rel="stylesheet" type="text/css" href="/components/ng-tags-input/ng-tags-input.min.css"/>
+  <!--<link href="/components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">-->
+  <link rel="stylesheet" type="text/css" href="/app/common/stylesheets/loadingAnimation.css">
 
   <script src="http://localhost/cordova.js"></script>
   <script src="/components/steroids-js/steroids.js"></script>
@@ -22,6 +24,10 @@
   <script src="/components/firebase/firebase.js"></script>
 <!-- AngularFire -->
   <script src="/components/angularfire/dist/angularfire.min.js"></script>
+  <!--JQuery-->
+  <script src="/components/jQuery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <% _.each(yield.modules, function(module) { %>
   <script src="/app/<%= module %>.js"></script>
