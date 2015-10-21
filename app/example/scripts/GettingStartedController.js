@@ -59,19 +59,17 @@ query.find({
      $scope.swipeLeft = function(){
           supersonic.ui.dialog.alert("LEFT!");
           var image = $scope.Images[imageindex % $scope.Images.length];
-          // image = $scope.Images[0];
           image.increment("dislikes");
           image.save();
-          imageindex++;
+          imageindex = imageindex + 1;
      }
                                          
      $scope.swipeRight = function(){
           supersonic.ui.dialog.alert("RIGHT!");
           var image = $scope.Images[imageindex % $scope.Images.length];
-          // image = $scope.Images[0];
           image.increment("likes");
           image.save();
-          imageindex++;
+          imageindex = imageindex + 1;
      }
                                          
      // $scope.refreshFeed = function() {
