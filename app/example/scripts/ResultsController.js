@@ -1,11 +1,34 @@
 angular
   .module('example')
-  .controller('ResultsController', ['$scope' , 'backendArray','Auth', 'supersonic',  function($scope, backendArray, Auth, supersonic, $firebaseObject) {
-  	var authData = Auth.$getAuth();
-      if (authData){
-        $scope.resultsArray = backendArray;
-        $scope.searchID = authData.uid;
+  .controller('ResultsController', ['$scope' ,'Auth', 'supersonic',  
+  function($scope, Auth, supersonic) {
+  	$scope.resultImages = [];
+    var authData = Auth.$getAuth();
+
+    var CustClass = Parse.Object.extend("newimg");
+    var query = new Parse.Query(CustClass);
+    query.equalTo("userid", authData.uid);
+    query.find({
+      success: function(results) {
+        // supersonic.ui.dialog.alert(results.length);
+        // Do something with the returned Parse.Object values
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var newResImg = {};
+          // supersonic.logger.log(object.get("likes"));
+          // $scope.likeylike = object.get('likes');
+          newResImg.likes = object.get("likes");
+          newResImg.dislikes = object.get("dislikes");
+          newResImg.title = object.get("title");
+          var img = object.get('newimage');
+          newResImg.photo = img.url();
+          $scope.resultImages.push(newResImg);
+        }
+      },
+      error: function(error) {
+        supersonic.ui.dialog.alert('ABANDON SHIP!!');
       }
+    });
     // $scope.fetchImageById = function(){
     //   $scope.searchID = $scope.userid;
     // };
