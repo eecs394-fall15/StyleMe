@@ -42,6 +42,6 @@ tab-bar-item#index {
   background-image: url(icons/blackfinger.png);
 }
 
-tab-bar-item#internet {
-  background-image: url(icons/search.svg);
+tab-bar-item#results {
+  background-image: url(icons/clipboard.svg);
 }

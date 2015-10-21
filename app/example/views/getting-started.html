@@ -2,25 +2,29 @@
     
     <super-navbar>
         <super-navbar-title>
-            StyleMe
+            StyleMe 
         </super-navbar-title>
     </super-navbar>
 
-    
     <loading-view ng-hide="!isLoading" is-loading="isLoading">
-        <img style="margin-top:185px;margin-left:110px"  width="100px" height="40px" src="/images/ajax-loader (1).gif"/>
-        <br><br>
-        <p style="margin-left:90px;font-family:new century schoolbook;font-size:18px"><em>Take a deep breath! :)</em></p>
+        <div class="container">
+            <button class="btn btn-lg btn-primary" style="position: absolute;top: 50%;left:25%"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+        </div>
     </loading-view>
-    
-    <div class="list card" ng-hide="isLoading">
+
+
+    <div ng-show="noMoreImages">
+        <button class="btn btn-default btn-lg btn-info" style="position: absolute;top: 50%;left:25%" ng-click="refreshFeed()"><span class="glyphicon glyphicon-refresh"></span> Refresh Feed</button>
+    </div>
+
+    <div class="list card" ng-hide="isLoading || noMoreImages">
 
         <div class="item item-divider" style="text-align:center">
-            {{swipeArray[cardIndex].title}}
+            {{currentTitle}}
         </div>
         
         <div class="item item-image">
-            <img class="full-image" ng-src="data:image/png;base64,{{swipeArray[cardIndex].image}}" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
+            <img class="full-image" ng-src="{{currentImg}}" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
                 </div>
         
         <table style="width:100%;text-align:center;" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
@@ -31,4 +35,5 @@
             </tr>
         </table>
     </div>
+
 </div>

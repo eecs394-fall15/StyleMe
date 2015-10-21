@@ -1,29 +1,25 @@
 <div class="padding" ng-controller="ResultsController">
-    
-    
- <super-navbar>
-    <super-navbar-title ng-bind="navbarTitle"></super-navbar-title>
+  <super-navbar>
+    <super-navbar-title>Results</super-navbar-title>
   </super-navbar>
 
-  <!--   <label class="item item-input">
-      <input type="text" placeholder="Enter your username" ng-model="userid">
-    </label>
-    <button class="button button-positive" ng-click="fetchImageById()">Submit</button> -->
-
-
-  <div ng-repeat="card in resultsArray | filter:{user:searchID}:true" class="list card">
-    <div class="item item-divider" style="text-align:center">
-      {{card.title}}
-    </div>
-
-    <div class="item item-image">
-      <img class="full-image" ng-src="data:image/png;base64,{{card.image}}">
-    </div>
-
-    <div class="item item-divider" style="text-align:center">
-            Likes: {{card.likes}}<br>
-            Dislikes: {{card.dislikes}}
-    </div>
+<div class="text-center"> 
+  <button class="btn btn-default btn-lg btn-info" ng-click="refresh()"><span class="glyphicon glyphicon-refresh" ></span>Refresh</button>
 </div>
 
+
+  <div ng-repeat="img in resultImages" class="list card">
+      <div class="item item-divider" style="text-align:center">
+        {{img.title}}
+      </div>
+
+      <div class="item item-image">
+        <img class="full-image" ng-src="{{img.photo}}">
+      </div>
+
+      <div class="item item-divider" style="text-align:center">
+              Likes: {{img.likes}}<br>
+              Dislikes: {{img.dislikes}}
+      </div>
+  </div>
 </div>
