@@ -2,6 +2,12 @@
   <super-navbar>
     <super-navbar-title>Results</super-navbar-title>
   </super-navbar>
+
+<div class="text-center"> 
+  <button class="btn btn-default btn-lg btn-info" ng-click="refresh()"><span class="glyphicon glyphicon-refresh" ></span>Refresh</button>
+</div>
+
+
   <div ng-repeat="img in resultImages" class="list card">
       <div class="item item-divider" style="text-align:center">
         {{img.title}}

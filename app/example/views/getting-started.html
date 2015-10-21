@@ -10,13 +10,13 @@
         <div class="container">
             <button class="btn btn-lg btn-primary" style="position: absolute;top: 50%;left:25%"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
         </div>
-        <!--<img style="margin-top:185px;margin-left:110px"  width="100px" height="40px" src="/images/ajax-loader (1).gif"/>
-        <br><br>
-        <p style="margin-left:90px;font-family:new century schoolbook;font-size:18px"><em>Take a deep breath! :)</em></p>-->
     </loading-view>
+
+
     <div ng-show="noMoreImages">
         <button class="btn btn-default btn-lg btn-info" style="position: absolute;top: 50%;left:25%" ng-click="refreshFeed()"><span class="glyphicon glyphicon-refresh"></span> Refresh Feed</button>
     </div>
+
     <div class="list card" ng-hide="isLoading || noMoreImages">
 
         <div class="item item-divider" style="text-align:center">
@@ -35,4 +35,5 @@
             </tr>
         </table>
     </div>
+
 </div>
