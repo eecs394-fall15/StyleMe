@@ -10,7 +10,6 @@ angular.module('example', [
 var countF = 0;
 return {
         getCount : function () {
-
             return countF;
         },
         incrementCount:function(){
@@ -40,12 +39,4 @@ return {
                             },
                             };
            
-           })
-.factory('backendArray', ['$firebaseArray',
-  function($firebaseArray) {
-    // create a reference to the database where we will store our data
-    var ref = new Firebase("https://styleme1.firebaseio.com/");
-
-    return $firebaseArray(ref);
-  }
-]);
+           });

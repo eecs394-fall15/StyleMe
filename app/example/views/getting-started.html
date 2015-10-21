@@ -2,11 +2,10 @@
     
     <super-navbar>
         <super-navbar-title>
-            StyleMe
+            StyleMe 
         </super-navbar-title>
     </super-navbar>
 
-    
     <loading-view ng-hide="!isLoading" is-loading="isLoading">
         <div class="container">
             <button class="btn btn-lg btn-primary" style="position: absolute;top: 50%;left:25%"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
@@ -21,11 +20,11 @@
     <div class="list card" ng-hide="isLoading || noMoreImages">
 
         <div class="item item-divider" style="text-align:center">
-            {{swipeArray[cardIndex].title}}
+            {{currentTitle}}
         </div>
         
         <div class="item item-image">
-            <img class="full-image" ng-src="data:image/png;base64,{{swipeArray[cardIndex].image}}" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
+            <img class="full-image" ng-src="{{currentImg}}" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
                 </div>
         
         <table style="width:100%;text-align:center;" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
