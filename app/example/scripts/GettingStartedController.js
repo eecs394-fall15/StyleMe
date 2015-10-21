@@ -57,19 +57,31 @@ query.find({
      // }
      
      $scope.swipeLeft = function(){
-          supersonic.ui.dialog.alert("LEFT!");
           var image = $scope.Images[imageindex % $scope.Images.length];
           image.increment("dislikes");
           image.save();
           imageindex = imageindex + 1;
+          var obj = $scope.Images[imageindex % $scope.Images.length];
+          var img = obj.get('newimage');
+          $scope.currentImg = img.url();
+          $scope.currentTitle = obj.get('title');
+
+          var options = {duration:.4}
+          supersonic.ui.animate("slideFromRight",options).perform();
      }
                                          
      $scope.swipeRight = function(){
-          supersonic.ui.dialog.alert("RIGHT!");
           var image = $scope.Images[imageindex % $scope.Images.length];
           image.increment("likes");
           image.save();
           imageindex = imageindex + 1;
+          var obj = $scope.Images[imageindex % $scope.Images.length];
+          var img = obj.get('newimage');
+          $scope.currentImg = img.url();
+          $scope.currentTitle = obj.get('title');
+
+          var options = {duration:.4}
+          supersonic.ui.animate("slideFromLeft",options).perform();
      }
                                          
      // $scope.refreshFeed = function() {

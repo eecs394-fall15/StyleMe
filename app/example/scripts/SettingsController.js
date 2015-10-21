@@ -1,6 +1,6 @@
 angular
   .module('example')
-  .controller('SettingsController', ['$scope' , 'backendArray','Auth', 'supersonic',  function($scope, backendArray, Auth, supersonic) {
+  .controller('SettingsController', ['$scope' ,'Auth', 'supersonic',  function($scope, Auth, supersonic) {
     $scope.userid = null;
     $scope.navbarTitle = "Settings";
     var authData = Auth.$getAuth();
@@ -17,15 +17,14 @@ angular
 		};
 		supersonic.media.camera.takePicture(options).then( function(result){
 			$scope.base64 = result;
-			
 		});
 	};
 	$scope.base64;
 
 	$scope.submitPicture = function(){
-			supersonic.logger.log(authData.uid);
+		supersonic.logger.log(authData.uid);
 
-		var CustClass = Parse.Object.extend("customclass");
+	  var CustClass = Parse.Object.extend("newimg");
       var custClass = new CustClass();
 
       custClass.set("likes", 0);
@@ -54,10 +53,9 @@ angular
           // error is a Parse.Error with an error code and message.
           supersonic.ui.dialog.alert('Sorry, there was a problem.');
         }
-      });
-      
 
-			$scope.base64="";
-			$scope.question="";
-              };
+      });
+      // end save
+    };
+    // end submitpicture
 }]);
