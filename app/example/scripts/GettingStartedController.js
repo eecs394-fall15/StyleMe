@@ -1,8 +1,7 @@
 angular
 .module('example')
-.controller('GettingStartedController', ['$scope', 'supersonic', 'incrementIndex', 'backendArray', 
+.controller('GettingStartedController', ['$scope', 'supersonic', 'incrementIndex', 'backendArray',
   function($scope, supersonic, incrementIndex, backendArray, $firebaseObject) {
-     
      $scope.swipeArray = backendArray;
      $scope.isLoading = true;
      $scope.swipeArray.$loaded().then

@@ -1,6 +1,6 @@
 angular.module('example', [
   // Declare here all AngularJS dependencies that are shared by the example module.
-  'supersonic', 'ngTouch', 'ngTagsInput', 'firebase'
+  'supersonic', 'ngTouch', 'ngTagsInput', 'firebase',
 ])
 .factory('Auth', ['$firebaseAuth', function($firebaseAuth){
   var ref = new Firebase("https://styleme1.firebaseio.com");

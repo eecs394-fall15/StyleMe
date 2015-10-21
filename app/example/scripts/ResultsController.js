@@ -6,16 +6,14 @@ angular
         $scope.resultsArray = backendArray;
         $scope.searchID = authData.uid;
       }
-    
-    
     // $scope.fetchImageById = function(){
     //   $scope.searchID = $scope.userid;
     // };
   	//var authData = null;
   	//$scope.test = "hey";
   	//$scope.$apply;
-  	var ref = new Firebase("https://styleme1.firebaseio.com/images");
-  	$scope.data = [];
+  	// var ref = new Firebase("https://styleme1.firebaseio.com/images");
+  	// $scope.data = [];
   	// if (authData){
   	// 	supersonic.logger.log("Hey we have the user");
   	// 	$scope.test = "got here";

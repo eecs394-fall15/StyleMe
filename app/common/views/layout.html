@@ -28,7 +28,9 @@
   <script src="/components/jQuery/dist/jquery.min.js"></script>
   <!-- Bootstrap -->
   <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+  <!-- Parse -->
+  <script src="//www.parsecdn.com/js/parse-1.6.4.min.js"></script>
+  <script>Parse.initialize("h04Fc8KyRVc4KBuYuQemUeOsrBQCF38DKrMn1LtD", "5pYMzefxZVdr3207uXNkcFVo2D8P7APtYVafm89K");</script>
   <% _.each(yield.modules, function(module) { %>
   <script src="/app/<%= module %>.js"></script>
   <% }); %>
