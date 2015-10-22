@@ -1,17 +1,16 @@
 angular
 .module('example')
-.controller('GettingStartedController', ['$scope', 'Auth', 'supersonic', 
-  function($scope, Auth, supersonic) {
-
+.controller('GettingStartedController', ['$scope', 'supersonic', 
+  function($scope, supersonic) {
+    var uid = '4c9ad587-f03e-4096-ba27-affa8bf45baf';
     $scope.isLoading = true;
     $scope.Images = [];
     $scope.noMoreImages =false;
     var imageindex = 0;
     $scope.currentImg = "YO";
-    var authData = Auth.$getAuth();
     var CustClass = Parse.Object.extend("newimg");
     var query = new Parse.Query(CustClass);
-    query.notEqualTo("userid", authData.uid); // If your finding any lags remove this line, though I dont know why this would slow down the app.
+    query.notEqualTo("userid", uid); // If your finding any lags remove this line, though I dont know why this would slow down the app.
     query.find({
      success: function(results) {
            supersonic.logger.log(results.length);

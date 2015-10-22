@@ -1,13 +1,14 @@
 angular
   .module('example')
-  .controller('ResultsController', ['$scope' ,'Auth', 'supersonic',  
-  function($scope, Auth, supersonic) {
+  .controller('ResultsController', ['$scope' , 'supersonic',  
+  function($scope, supersonic) {
   	$scope.resultImages = [];
-    var authData = Auth.$getAuth();
+    // var authData = Auth.$getAuth();
 
     var CustClass = Parse.Object.extend("newimg");
     var query = new Parse.Query(CustClass);
-    query.equalTo("userid", authData.uid);
+    var uid = '4c9ad587-f03e-4096-ba27-affa8bf45baf';
+    query.equalTo("userid", uid);
 
     query.find({
       success: function(results) {

@@ -1,9 +1,9 @@
 angular
   .module('example')
-  .controller('SettingsController', ['$scope' ,'Auth', 'supersonic',  function($scope, Auth, supersonic) {
+  .controller('SettingsController', ['$scope','supersonic',  function($scope, supersonic) {
     $scope.userid = null;
     $scope.navbarTitle = "Settings";
-    var authData = Auth.$getAuth();
+    
 	
     $scope.openCamera = function(){
 		var options = {
@@ -22,15 +22,14 @@ angular
 	$scope.base64;
 
 	$scope.submitPicture = function(){
-		supersonic.logger.log(authData.uid);
 
 	  var CustClass = Parse.Object.extend("newimg");
       var custClass = new CustClass();
-
+	  var uid = '4c9ad587-f03e-4096-ba27-affa8bf45baf';
       custClass.set("likes", 0);
       custClass.set("dislikes", 0);
       custClass.set("title", $scope.question);
-      custClass.set("userid", authData.uid);
+      custClass.set("userid", uid);
 
       var file = new Parse.File("myphoto.png", { base64: $scope.base64 });
 
