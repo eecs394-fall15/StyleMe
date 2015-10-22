@@ -17,9 +17,10 @@
         <img class="full-image" ng-src="{{img.photo}}">
       </div>
 
-      <div class="item item-divider" style="text-align:center">
-              Likes: {{img.likes}}<br>
-              Dislikes: {{img.dislikes}}
-      </div>
+              <div class="row">
+              <div class="col-xs-6"><img src="/images/thumbs-up.png" style ="width: 35px"> {{img.likes}} <span></div>
+              <div class="col-xs-6" ><img src="/images/thumbs-down.png" style ="width: 35px"> {{img.dislikes}}</div>
+              </div>
+
   </div>
 </div>
