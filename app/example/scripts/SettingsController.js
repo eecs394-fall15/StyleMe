@@ -52,7 +52,6 @@ angular
           // error is a Parse.Error with an error code and message.
           supersonic.ui.dialog.alert('Sorry, there was a problem.');
         }
-
       });
       // end save
     };

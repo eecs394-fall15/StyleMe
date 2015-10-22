@@ -26,11 +26,3 @@ module.exports =
 
   preloads: [
   ]
-
-  drawers:
-    left:
-      id: "leftDrawer"
-      location: "example#drawer"
-      showOnAppLoad: false
-    options:
-      animation: "swingingDoor"

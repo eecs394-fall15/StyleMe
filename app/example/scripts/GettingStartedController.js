@@ -73,6 +73,7 @@ angular
           var options = {duration:.4}
           supersonic.ui.animate("slideFromRight",options).perform();
           }
+          // $('button').class('')
         else{
               
         }
