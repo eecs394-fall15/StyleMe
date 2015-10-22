@@ -45,7 +45,9 @@ angular
       custClass.save(null, {
         success: function(gameScore) {
           // Execute any logic that should take place after the object is saved.
+
           supersonic.ui.dialog.alert('Uploaded photo!');
+
         },
         error: function(gameScore, error) {
           // Execute any logic that should take place if the save fails.
@@ -54,6 +56,9 @@ angular
         }
       });
       // end save
+                $scope.base64 = "";
+          $scope.question = "";
+          $scope.$apply;
     };
     // end submitpicture
 }]);
