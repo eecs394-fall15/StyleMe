@@ -1,32 +1,50 @@
 angular
 .module('example')
-.controller('GettingStartedController', ['$scope', 'supersonic',
-  function($scope, supersonic) {
+.controller('GettingStartedController', ['$scope', 'Auth', 'supersonic', 
+  function($scope, Auth, supersonic) {
+
     $scope.isLoading = true;
     $scope.Images = [];
     $scope.noMoreImages =false;
     var imageindex = 0;
     $scope.currentImg = "YO";
+    var authData = Auth.$getAuth();
     var CustClass = Parse.Object.extend("newimg");
-var query = new Parse.Query(CustClass);
-query.find({
-  success: function(results) {
-           supersonic.logger.log("Sucess");
-    // Do something with the returned Parse.Object values
-    for (var i = 0; i < results.length; i++) {
-      var object = results[i];
-      $scope.Images.push(object);
+    var query = new Parse.Query(CustClass);
+    query.notEqualTo("userid", authData.uid); // If your finding any lags remove this line, though I dont know why this would slow down the app.
+    query.find({
+     success: function(results) {
+           supersonic.logger.log(results.length);
+           if(results.length)
+      {// Do something with the returned Parse.Object values
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+        $scope.Images.push(object);
+      }
+      var obj = $scope.Images[imageindex];
+      var img = obj.get('newimage');
+      $scope.currentImg = img.url();
+      $scope.currentTitle = obj.get('title');
+      $scope.isLoading = false;
     }
-    var obj = $scope.Images[imageindex];
-    var img = obj.get('newimage');
-    $scope.currentImg = img.url();
-    $scope.currentTitle = obj.get('title');
-    $scope.isLoading = false;
-  },
-  error: function(error) {
-    supersonic.ui.dialog.alert('ABANDON SHIP!!');
-  }
-});
+  
+    else
+    {     
+      $scope.isLoading = false;
+      $scope.noMoreImages = true;
+              var options = {
+                     message: "No images for now! :(",
+                     buttonLabel: "Close"
+                    };
+              supersonic.ui.dialog.alert("Oops!", options).then(function() {
+                 supersonic.logger.log("Alert closed.");
+               });
+    }          
+      },
+     error: function(error) {
+      supersonic.ui.dialog.alert('ABANDON SHIP!!');
+    }
+  });
      // $scope.swipeArray = backendArray;
      // $scope.isLoading = true;
      // $scope.swipeArray.$loaded().then
@@ -43,14 +61,12 @@ query.find({
      // }
      
      $scope.swipeLeft = function(){
-          var image = $scope.Images[imageindex % $scope.Images.length];
+          var image = $scope.Images[imageindex];
           image.increment("dislikes");
           image.save();
           if(imageindex < $scope.Images.length - 1){
           imageindex = imageindex + 1;
-           supersonic.logger.log("Image Index:" + imageindex);
-           supersonic.logger.log("Images Length" + $scope.Images.length);
-          var obj = $scope.Images[imageindex % $scope.Images.length];
+          var obj = $scope.Images[imageindex];
           var img = obj.get('newimage');
           $scope.currentImg = img.url();
           $scope.currentTitle = obj.get('title');
@@ -59,26 +75,17 @@ query.find({
           supersonic.ui.animate("slideFromRight",options).perform();
           }
         else{
-              $scope.noMoreImages = true;
-              var options = {
-                     message: "No more images for now! :(",
-                     buttonLabel: "Close"
-                    };
-              supersonic.ui.dialog.alert("Oops!", options).then(function() {
-                 supersonic.logger.log("Alert closed.");
-               });
+              
         }
      }
                                          
      $scope.swipeRight = function(){
-          var image = $scope.Images[imageindex % $scope.Images.length];
+          var image = $scope.Images[imageindex];
           image.increment("likes");
           image.save();
           if(imageindex < $scope.Images.length - 1){
-           supersonic.logger.log("Image Index:" + imageindex);
-           supersonic.logger.log("Images Length" + $scope.Images.length);
           imageindex = imageindex + 1;
-          var obj = $scope.Images[imageindex % $scope.Images.length];
+          var obj = $scope.Images[imageindex];
           var img = obj.get('newimage');
           $scope.currentImg = img.url();
           $scope.currentTitle = obj.get('title');
