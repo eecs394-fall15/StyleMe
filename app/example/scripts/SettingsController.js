@@ -1,9 +1,8 @@
 angular
   .module('example')
-  .controller('SettingsController', ['$scope' ,'Auth', 'supersonic',  function($scope, Auth, supersonic) {
+  .controller('SettingsController', ['$scope' ,'supersonic', '$rootScope',  function($scope, supersonic, $rootScope) {
     $scope.userid = null;
     $scope.navbarTitle = "Settings";
-	  $scope.currentUser = Parse.User.current();
     $scope.openCamera = function(){
 		var options = {
 		  quality: 50,
@@ -28,7 +27,7 @@ angular
       custClass.set("likes", 0);
       custClass.set("dislikes", 0);
       custClass.set("title", $scope.question);
-      custClass.set("userid", $scope.currentUser.id);
+      custClass.set("userid", $rootScope.currentUser.id);
 
       var file = new Parse.File("myphoto.png", { base64: $scope.base64 });
 

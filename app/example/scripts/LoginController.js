@@ -2,6 +2,12 @@ angular
   .module('example')
   .controller('LoginController', ['$scope' , 'supersonic', '$rootScope', function($scope, supersonic, $rootScope) {
     $scope.scenario = 'Log in';
+    if($rootScope.currentUser)
+    {
+      $scope.scenario = 'Logged in';
+      var animation = supersonic.ui.animate("curlDown");
+      supersonic.ui.initialView.dismiss(animation);
+    }
   $scope.signUp = function(form) {
     var user = new Parse.User();
     user.set("email", form.email);

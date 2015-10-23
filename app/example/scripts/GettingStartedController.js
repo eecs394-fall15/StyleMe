@@ -1,7 +1,7 @@
 angular
 .module('example')
-.controller('GettingStartedController', ['$scope', 'Auth', 'supersonic', '$rootScope',
-  function($scope, Auth, supersonic, $rootScope) {
+.controller('GettingStartedController', ['$scope', 'supersonic', '$rootScope',
+  function($scope, supersonic, $rootScope) {
     //$scope.currentUser = Parse.User.current();
     $scope.isLoading = true;
     $scope.Images = [];

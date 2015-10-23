@@ -1,7 +1,7 @@
 angular
   .module('example')
-  .controller('ResultsController', ['$scope' ,'Auth', 'supersonic', '$rootScope',
-  function($scope, Auth, supersonic, $rootScope) {
+  .controller('ResultsController', ['$scope', 'supersonic', '$rootScope',
+  function($scope, supersonic, $rootScope) {
   	$scope.resultImages = [];
     //$scope.currentUser = Parse.User.current();
 
