@@ -74,7 +74,11 @@ angular
           supersonic.ui.animate("slideFromRight",options).perform();
           }
         else{
+<<<<<<< HEAD
               $scope.noMoreImages = true;
+=======
+                  $scope.noMoreImages = true;
+>>>>>>> master
                 var options = {
                      message: "No more images for now! :(",
                      buttonLabel: "Close"
