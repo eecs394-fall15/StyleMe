@@ -75,7 +75,14 @@ angular
           }
           // $('button').class('')
         else{
-              
+              $scope.noMoreImages = true;
+                var options = {
+                     message: "No more images for now! :(",
+                     buttonLabel: "Close"
+                  };
+              supersonic.ui.dialog.alert("Oops!", options).then(function() {
+                  supersonic.logger.log("Alert closed.");
+              });
         }
      }
                                          
