@@ -1,17 +1,16 @@
 angular
 .module('example')
-.controller('GettingStartedController', ['$scope', 'Auth', 'supersonic', 
-  function($scope, Auth, supersonic) {
-
+.controller('GettingStartedController', ['$scope', 'Auth', 'supersonic', '$rootScope',
+  function($scope, Auth, supersonic, $rootScope) {
+    //$scope.currentUser = Parse.User.current();
     $scope.isLoading = true;
     $scope.Images = [];
     $scope.noMoreImages =false;
     var imageindex = 0;
-    $scope.currentImg = "YO";
-    var authData = Auth.$getAuth();
+    $scope.currentImg = "YO";   
     var CustClass = Parse.Object.extend("newimg");
     var query = new Parse.Query(CustClass);
-    query.notEqualTo("userid", authData.uid); // If your finding any lags remove this line, though I dont know why this would slow down the app.
+    query.notEqualTo("userid", $rootScope.currentUser.id);
     query.find({
      success: function(results) {
            supersonic.logger.log(results.length);
@@ -64,7 +63,7 @@ angular
           var image = $scope.Images[imageindex];
           image.increment("dislikes");
           image.save();
-          if(imageindex < $scope.Images.length - 1){
+         if(imageindex < $scope.Images.length - 1){
           imageindex = imageindex + 1;
           var obj = $scope.Images[imageindex];
           var img = obj.get('newimage');
@@ -75,7 +74,14 @@ angular
           supersonic.ui.animate("slideFromRight",options).perform();
           }
         else{
-              
+              $scope.noMoreImages = true;
+                var options = {
+                     message: "No more images for now! :(",
+                     buttonLabel: "Close"
+                  };
+              supersonic.ui.dialog.alert("Oops!", options).then(function() {
+                  supersonic.logger.log("Alert closed.");
+              });
         }
      }
                                          
@@ -92,7 +98,7 @@ angular
           //Animate
           var options = {duration:.4}
           supersonic.ui.animate("slideFromLeft",options).perform();
-                                         }
+           }
          else{
                 $scope.noMoreImages = true;
                 var options = {
