@@ -9,17 +9,15 @@
 
 
   <div ng-repeat="img in resultImages" class="list card">
-      <div class="item item-divider" style="text-align:center">
+      <div class="item item-divider text-center">
         {{img.title}}
       </div>
-
       <div class="item item-image">
         <img class="full-image" ng-src="{{img.photo}}">
       </div>
-
               <div class="row">
-              <div class="col-xs-6"><img src="/images/thumbs-up.png" style ="width: 35px"> {{img.likes}} <span></div>
-              <div class="col-xs-6" ><img src="/images/thumbs-down.png" style ="width: 35px"> {{img.dislikes}}</div>
+              <div class="col-xs-6 col-xs-offset-2"><img src="/images/thumbs-up.png" style ="width: 35px"> {{img.likes}} <span></div>
+              <div class="col-xs-6 col-xs-offset-2" ><img src="/images/thumbs-down.png" style ="width: 35px"> {{img.dislikes}}</div>
               </div>
 
   </div>
