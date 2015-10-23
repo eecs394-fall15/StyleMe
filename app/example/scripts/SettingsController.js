@@ -53,6 +53,8 @@ angular
 
       });
       // end save
+           $scope.base64 = "";
+          $scope.question = "";
     };
     // end submitpicture
 }]);
