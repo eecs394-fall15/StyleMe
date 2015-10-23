@@ -2,6 +2,7 @@ angular
   .module('example')
   .controller('SettingsController', ['$scope' ,'supersonic', '$rootScope',  function($scope, supersonic, $rootScope) {
     $scope.userid = null;
+    $scope.hide = true;
     $scope.navbarTitle = "Settings";
     $scope.openCamera = function(){
 		var options = {
@@ -15,6 +16,7 @@ angular
 		};
 		supersonic.media.camera.takePicture(options).then( function(result){
 			$scope.base64 = result;
+      $scope.hide = false;
 		});
 	};
 	$scope.base64;
