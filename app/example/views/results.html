@@ -16,8 +16,12 @@
         <img class="full-image" ng-src="{{img.photo}}">
       </div>
               <div class="row">
-              <div class="col-xs-6 col-xs-offset-2"><img src="/images/thumbs-up.png" style ="width: 35px"> {{img.likes}} <span></div>
-              <div class="col-xs-6 col-xs-offset-2" ><img src="/images/thumbs-down.png" style ="width: 35px"> {{img.dislikes}}</div>
+              <div class="col-xs-6 col-xs-offset-2" style = "vertical-align:middle;color:#8B0000"  ><img src="/images/thumbs-down.png" style ="width: 35px"> {{img.dislikes}} </div>
+              <div class="col-xs-6 col-xs-offset-2" style = "vertical-align:middle;color:#228B22"><img src="/images/thumbs-up.png" style ="width: 35px"> {{img.likes}}</div>
+              </div>
+              <div class="row">
+              <div class="col-xs-4 col-xs-offset-2" style = "vertical-align:middle;color:#8B0000"> No</div>
+              <div class="col-xs-4 col-xs-offset-2" style = "vertical-align:middle;color:#228B22">Yes</div>
               </div>
 
   </div>
