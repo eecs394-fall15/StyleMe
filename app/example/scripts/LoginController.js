@@ -17,6 +17,7 @@ angular
     user.signUp(null, {
       success: function(user) {
         $rootScope.currentUser = user;
+        $scope.scenario = 'Logged in';
         $scope.$apply(); // Notify AngularJS to sync currentUser
         var animation = supersonic.ui.animate("curlDown");
         supersonic.ui.initialView.dismiss(animation);
